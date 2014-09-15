@@ -81,22 +81,30 @@ connectDB()
 
 ## API
 
-#### lil.Event([ options ])
+#### lil.Event()
 
 Create a new Event bus
 
-#### lil.Event#on(event, handler)
+#### lil.Event#on(event, fn)
+Alias: `addListener` Return: `this`
 
 Subscribe to an specific event
 
-#### lil.Event#once(event, handler)
+#### lil.Event#once(event, fn)
+Alias: `addOnceListener` Return: `this`
 
 Subcribe to an specific event for a once time.
 After event is emitted, the handler will be flushed from the listeners pool
 
-#### lil.Event#off(event, handler)
+#### lil.Event#off(event, fn)
+Alias: `addListener` Return: `this`
+
+Unsubscribe an event listener by name and function
 
 #### lil.Event#emit(event, [ arguments... ])
+Alias: `fire` Return: `this`
+
+Fire an event on the current bus
 
 #### lil.Event.VERSION
 
