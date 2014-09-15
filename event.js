@@ -67,14 +67,11 @@
 
   Event.prototype._getListeners = function (event, fn) {
     var events = this._getEvents()
-    if (hasOwn.call(events, event))
-      return events[event]
-    else
-      events[event] = []
+    return hasOwn.call(events, event) ? events[event] : (events[event] = [])
   }
 
   Event.prototype._getEvents = function () {
-    return this._events || this.events = {}
+    return this._events || (this._events = {})
   }
 
   Event.prototype.toString = function () {
