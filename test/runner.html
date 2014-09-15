@@ -11,11 +11,11 @@
       mocha.ui('bdd')
       mocha.reporter('html')
       require = function (module) {
-        return module === 'chai' ? chai : lil
+        return module === 'chai' ? chai : lil.Event
       }
     </script>
-    <script src="../type.js"></script>
-    <script src="type.js"></script>
+    <script src="../event.js"></script>
+    <script src="event.js"></script>
     <script>
       if (window.mochaPhantomJS) mochaPhantomJS.run()
       else mocha.run()
