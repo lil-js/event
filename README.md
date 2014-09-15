@@ -12,7 +12,7 @@ Tiny event bus inspired in Node's EventEmitter
 <td><b>Version</b></td><td>0.1.0</td>
 </tr>
 <tr>
-<td><b>Size</b></td><td>2 KB / 1 KB (gzipped)</td>
+<td><b>Size</b></td><td>2 KB / >1 KB (gzipped)</td>
 </tr>
 <tr>
 <td><b>Environment</b></td><td>Node, Browser</td>
