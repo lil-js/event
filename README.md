@@ -1,4 +1,4 @@
-# [lil](http://lil-js.github.io)'-event [![Build Status](https://api.travis-ci.org/lil-js/event.svg?branch=master)][travis] [![Stories in Ready](https://badge.waffle.io/lil-js/event.png?label=ready&title=Ready)](https://waffle.io/lil-js/event) [![Code Climate](https://codeclimate.com/github/lil-js/event/badges/gpa.svg)](https://codeclimate.com/github/lil-js/event) [![Gitter chat](https://badges.gitter.im/lil-js/event.png)](https://gitter.im/lil-js/event)
+# [lil](http://lil-js.github.io)'-event [![Build Status](https://api.travis-ci.org/lil-js/event.svg?branch=master)][travis] [![Stories in Ready](https://badge.waffle.io/lil-js/event.png?label=ready&title=Ready)](https://waffle.io/lil-js/event) [![Code Climate](https://codeclimate.com/github/lil-js/event/badges/gpa.svg)](https://codeclimate.com/github/lil-js/event) [![Gitter chat](https://badges.gitter.im/lil-js/all.png)](https://gitter.im/lil-js/all)
 
 <img align="center" height="150" src="http://lil-js.github.io/img/liljs-logo.png" />
 
@@ -12,7 +12,7 @@ Tiny event bus inspired in Node's EventEmitter
 <td><b>Version</b></td><td>0.1.0</td>
 </tr>
 <tr>
-<td><b>Size</b></td><td>3 KB / 1 KB (gzipped)</td>
+<td><b>Size</b></td><td>2 KB / 1 KB (gzipped)</td>
 </tr>
 <tr>
 <td><b>Environment</b></td><td>Node, Browser</td>

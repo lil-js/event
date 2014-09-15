@@ -15,7 +15,7 @@
   var slice = Array.prototype.slice
   var hasOwn = Object.prototype.hasOwnProperty
 
-	function Event() {}
+  function Event() {}
 
   Event.prototype.constructor = Event
 
