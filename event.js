@@ -23,9 +23,8 @@
     var listeners = this._getListeners(event)
     if (typeof event !== 'string') throw new TypeError('First argument must be a string')
     if (typeof fn !== 'function') throw new TypeError('Second argument must be a function')
-    if (!this._findListener(event, fn)) {
+    if (!this._findListener(event, fn))
       listeners.push({ fn: fn, once: once || false })
-    }
     return this
   }
 
@@ -58,10 +57,18 @@
     return this
   }
 
+  Event.prototype.removeAllListeners = Event.prototype.offAll = function (event) {
+    if (event && hasOwn.call(this._events, event)) {
+      this._events[event].splice(0)
+    }
+    return this
+  }
+
   Event.prototype._findListener = function (event, fn) {
-    var i, l, listeners = this._getListeners(event)
+    var i, l, listener, listeners = this._getListeners(event)
     for (i = 0, l = listeners.length; i < l; i += 1) {
-      if (listeners[i].fn === fn) return listeners[i]
+      listener = listeners[i]
+      if (listener.fn === fn) return listener
     }
   }
 

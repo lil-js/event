@@ -46,6 +46,15 @@ describe('event', function () {
       bus.off('once', increment)
       expect(bus._getListeners('once')).to.have.length(0)
     })
+
+    it('should remove all listeners', function () {
+      bus.on('once', increment)
+      expect(bus._getListeners('once')).to.have.length(1)
+      bus.on('once', function () {})
+      expect(bus._getListeners('once')).to.have.length(2)
+      bus.offAll('once')
+      expect(bus._getListeners('once')).to.have.length(0)
+    })
   })
 
 })
