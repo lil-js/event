@@ -1,7 +1,7 @@
 var Event = require('../event')
 var expect = require('chai').expect
 
-describe('type', function () {
+describe('event', function () {
   it('should expose the event constructor', function () {
     expect(Event).to.be.a('function')
   })
@@ -10,7 +10,7 @@ describe('type', function () {
     expect(Event.VERSION).to.be.a('string')
   })
 
-  describe('event listener', function () {
+  describe('listeners', function () {
     var bus = null, count = 0
 
     function increment() { count += 1 }
