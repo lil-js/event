@@ -2,6 +2,8 @@ var Event = require('../event')
 var expect = require('chai').expect
 
 describe('event', function () {
+  var bus = null
+
   it('should expose the event constructor', function () {
     expect(Event).to.be.a('function')
   })
@@ -11,7 +13,7 @@ describe('event', function () {
   })
 
   describe('listeners', function () {
-    var bus = null, count = 0
+    var count = 0
 
     function increment() { count += 1 }
 
@@ -54,6 +56,20 @@ describe('event', function () {
       expect(bus._getListeners('once')).to.have.length(2)
       bus.offAll('once')
       expect(bus._getListeners('once')).to.have.length(0)
+    })
+  })
+
+  describe('error', function () {
+    before(function () {
+      bus = new Event
+    })
+
+    it('should throw a TypeError exception if invalid event name', function () {
+      expect(function () { bus.on(null) }).to.throw(TypeError)
+    })
+
+    it('should throw a TypeError exception if invalid event listener', function () {
+      expect(function () { bus.on('test', null) }).to.throw(TypeError)
     })
   })
 
