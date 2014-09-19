@@ -59,6 +59,47 @@ describe('event', function () {
     })
   })
 
+  describe('inherited prototype', function () {
+    var human = null, count = 0
+
+    function Human() {}
+    Human.prototype = Object.create(Event.prototype)
+
+    before(function () {
+      human = new Human
+    })
+
+    it('should bind a new event', function () {
+      human.on('test', function () { count += 1 })
+      expect(human._events).to.have.property('test')
+      expect(human._getListeners('test')).to.have.length(1)
+    })
+
+    it('should emit an event', function () {
+      human.emit('test')
+      expect(count).to.be.equal(1)
+      expect(human._events).to.have.property('test')
+    })
+
+    it('should remove all event listeners', function () {
+      human.offAll('test')
+      expect(human._events).to.have.property('test')
+      expect(human._getListeners('test')).to.have.length(0)
+    })
+
+    it('should bind a once event listener', function () {
+      human.once('unique', function () {})
+      expect(human._events).to.have.property('unique')
+      expect(human._getListeners('unique')).to.have.length(1)
+    })
+
+    it('should emit an event', function () {
+      human.emit('unique')
+      expect(human._events).to.have.property('unique')
+      expect(human._getListeners('unique')).to.have.length(0)
+    })
+  })
+
   describe('error', function () {
     before(function () {
       bus = new Event
