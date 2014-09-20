@@ -63,10 +63,10 @@ function connectDB() {
   var bus = new lil.Event()
   db.connect(uri)
     .on('error', function (err) {
-      emitter.emit('error', err)
+      bus.emit('error', err)
     })
     .on('success', function () {
-      emitter.emit('start', db)
+      bus.emit('start', db)
     })
   return bus
 }
@@ -77,6 +77,33 @@ function connectDB() {
 connectDB()
   .on('error', onErrorHandler)
   .on('start', onStartHandler)
+```
+
+##### Prototype inheritance
+
+```js
+function Human() {}
+
+Human.prototype = Object.create(lil.Event.prototype)
+
+Human.prototype.walk = function (distance) {
+  this.emit('walk', distance)
+}
+
+Human.prototype.sleep = function (time) {
+  this.emit('walk', time)
+}
+```
+
+##### Event subscription
+```js
+var human = new Human()
+human.on('walk', function (distance) {
+  // ...
+})
+human.on('sleep', function (time) {
+  // ...
+})
 ```
 
 ## API
