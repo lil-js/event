@@ -72,7 +72,7 @@ function connectDB() {
 }
 ```
 
-#### Event bus suscription
+##### Events subscription
 ```js
 connectDB()
   .on('error', onErrorHandler)
