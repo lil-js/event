@@ -95,7 +95,7 @@ Human.prototype.sleep = function (time) {
 }
 ```
 
-##### Event subscription
+##### Events subscription
 ```js
 var human = new Human()
 human.on('walk', function (distance) {
