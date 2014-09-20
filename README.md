@@ -9,7 +9,7 @@ Tiny event bus inspired in Node's EventEmitter
 <td><b>Name</b></td><td>event</td>
 </tr>
 <tr>
-<td><b>Version</b></td><td>0.1.0</td>
+<td><b>Version</b></td><td>0.1.1</td>
 </tr>
 <tr>
 <td><b>Size</b></td><td>2 KB / >1 KB (gzipped)</td>
@@ -37,7 +37,7 @@ component install lil-js/event
 ```
 Or loading the script remotely
 ```html
-<script src="//cdn.rawgit.com/lil-js/event/0.1.0/event.js"></script>
+<script src="//cdn.rawgit.com/lil-js/event/0.1.1/event.js"></script>
 ```
 
 ### Environments
