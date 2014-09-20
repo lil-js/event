@@ -23,8 +23,7 @@
     var listeners = this._getListeners(event)
     if (typeof event !== 'string') throw new TypeError('First argument must be a string')
     if (typeof fn !== 'function') throw new TypeError('Second argument must be a function')
-    if (!this._findListener(event, fn))
-      listeners.push({ fn: fn, once: once || false })
+    if (!this._findListener(event, fn)) listeners.push({ fn: fn, once: once || false })
     return this
   }
 
@@ -79,10 +78,6 @@
 
   Event.prototype._getEvents = function () {
     return this._events || (this._events = {})
-  }
-
-  Event.prototype.toString = function () {
-    return '[object Event]'
   }
 
   Event.VERSION = VERSION
