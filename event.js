@@ -20,9 +20,10 @@
   Event.prototype.constructor = Event
 
   Event.prototype.addListener = Event.prototype.on = function (event, fn, once) {
-    var listeners = getListeners.call(this, event)
+    var listeners
     if (typeof event !== 'string') throw new TypeError('First argument must be a string')
     if (typeof fn !== 'function') throw new TypeError('Second argument must be a function')
+    listeners = getListeners.call(this, event)
     if (!findListener.call(this, event, fn)) listeners.push({ fn: fn, once: once || false })
     return this
   }
