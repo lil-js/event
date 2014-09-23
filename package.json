@@ -1,7 +1,7 @@
 {
   "name": "lil-event",
   "description": "Tiny event bus inspired in Node's EventEmitter",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "repository": "lil-js/event",
   "author": "Tomas Aparicio",
