@@ -23,7 +23,7 @@ describe('event', function () {
 
     it('should add a event listener', function () {
       bus.on('test', increment)
-      expect(bus._getListeners('test')).to.have.length(1)
+      expect(bus._events.test).to.have.length(1)
       expect(bus._events).to.have.property('test')
     })
 
@@ -36,7 +36,7 @@ describe('event', function () {
       bus.once('once', increment)
       expect(bus._events).to.have.property('test')
       expect(bus._events).to.have.property('once')
-      expect(bus._getListeners('once')).to.have.length(1)
+      expect(bus._events.once).to.have.length(1)
     })
 
     it('should emit the once event', function () {
@@ -46,16 +46,16 @@ describe('event', function () {
 
     it('should remove a event listener', function () {
       bus.off('once', increment)
-      expect(bus._getListeners('once')).to.have.length(0)
+      expect(bus._events.once).to.have.length(0)
     })
 
     it('should remove all listeners', function () {
       bus.on('once', increment)
-      expect(bus._getListeners('once')).to.have.length(1)
+      expect(bus._events.once).to.have.length(1)
       bus.on('once', function () {})
-      expect(bus._getListeners('once')).to.have.length(2)
+      expect(bus._events.once).to.have.length(2)
       bus.offAll('once')
-      expect(bus._getListeners('once')).to.have.length(0)
+      expect(bus._events.once).to.have.length(0)
     })
   })
 
@@ -72,7 +72,7 @@ describe('event', function () {
     it('should bind a new event', function () {
       human.on('test', function () { count += 1 })
       expect(human._events).to.have.property('test')
-      expect(human._getListeners('test')).to.have.length(1)
+      expect(human._events.test).to.have.length(1)
     })
 
     it('should emit an event', function () {
@@ -84,19 +84,19 @@ describe('event', function () {
     it('should remove all event listeners', function () {
       human.offAll('test')
       expect(human._events).to.have.property('test')
-      expect(human._getListeners('test')).to.have.length(0)
+      expect(human._events.test).to.have.length(0)
     })
 
     it('should bind a once event listener', function () {
       human.once('unique', function () {})
       expect(human._events).to.have.property('unique')
-      expect(human._getListeners('unique')).to.have.length(1)
+      expect(human._events.unique).to.have.length(1)
     })
 
     it('should emit an event', function () {
       human.emit('unique')
       expect(human._events).to.have.property('unique')
-      expect(human._getListeners('unique')).to.have.length(0)
+      expect(human._events.unique).to.have.length(0)
     })
   })
 

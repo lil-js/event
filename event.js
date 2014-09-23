@@ -20,17 +20,17 @@
   Event.prototype.constructor = Event
 
   Event.prototype.addListener = Event.prototype.on = function (event, fn, once) {
-    var listeners = this._getListeners(event)
+    var listeners = getListeners.call(this, event)
     if (typeof event !== 'string') throw new TypeError('First argument must be a string')
     if (typeof fn !== 'function') throw new TypeError('Second argument must be a function')
-    if (!this._findListener(event, fn)) listeners.push({ fn: fn, once: once || false })
+    if (!findListener.call(this, event, fn)) listeners.push({ fn: fn, once: once || false })
     return this
   }
 
   Event.prototype.removeListener = Event.prototype.off = function (event, fn) {
     var index
-    var listeners = this._getListeners(event)
-    var listener = this._findListener(event, fn)
+    var listeners = getListeners.call(this, event)
+    var listener = findListener.call(this, event, fn)
     if (listener) {
       index = listeners.indexOf(listener)
       if (index >= 0) listeners.splice(index, 1)
@@ -45,7 +45,7 @@
 
   Event.prototype.emit = Event.prototype.fire = function (event) {
     var i, l, listener, args = slice.call(arguments).slice(1)
-    var listeners = this._getListeners(event)
+    var listeners = getListeners.call(this, event)
     if (event) {
       for (i = 0, l = listeners.length; i < l; i += 1) {
         listener = listeners[i]
@@ -63,20 +63,20 @@
     return this
   }
 
-  Event.prototype._findListener = function (event, fn) {
-    var i, l, listener, listeners = this._getListeners(event)
+  function findListener(event, fn) {
+    var i, l, listener, listeners = getListeners.call(this, event)
     for (i = 0, l = listeners.length; i < l; i += 1) {
       listener = listeners[i]
       if (listener.fn === fn) return listener
     }
   }
 
-  Event.prototype._getListeners = function (event, fn) {
-    var events = this._getEvents()
+  function getListeners(event, fn) {
+    var events = getEvents.call(this)
     return hasOwn.call(events, event) ? events[event] : (events[event] = [])
   }
 
-  Event.prototype._getEvents = function () {
+  function getEvents() {
     return this._events || (this._events = {})
   }
 
