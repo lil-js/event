@@ -11,7 +11,8 @@
     factory((root.lil = root.lil || {}))
   }
 }(this, function (exports) {
-  var VERSION = '0.1.2'
+  'use strict'
+  var VERSION = '0.1.3'
   var slice = Array.prototype.slice
   var hasOwn = Object.prototype.hasOwnProperty
 
