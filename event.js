@@ -66,10 +66,9 @@
   }
 
   function findListener(event, fn) {
-    var i, l, listener, listeners = getListeners.call(this, event)
+    var i, l, listeners = getListeners.call(this, event)
     for (i = 0, l = listeners.length; i < l; i += 1) {
-      listener = listeners[i]
-      if (listener.fn === fn) return listener
+      if (listeners[i].fn === fn) return listeners[i]
     }
   }
 
