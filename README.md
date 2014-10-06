@@ -120,13 +120,13 @@ Subscribe to an specific event
 #### Event#once(event, fn)
 Alias: `addOnceListener` Return: `this`
 
-Subcribe to an specific event for a once time.
-After event is emitted, the handler will be flushed from the listeners pool
+Subscribe to a specific event for a once time.
+After its emitted, the function handler will be removed from the listeners pool
 
 #### Event#off(event, fn)
 Alias: `addListener` Return: `this`
 
-Unsubscribe an event listener by name and function
+Unsubscribe an event listener by name and its handler function
 
 #### Event#emit(event, [ arguments... ])
 Alias: `fire` Return: `this`
