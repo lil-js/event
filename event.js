@@ -46,7 +46,7 @@
   }
 
   Event.prototype.emit = Event.prototype.fire = function (event) {
-    var i, l, listener, args = slice.call(arguments).slice(1)
+    var i, l, listener, args = slice.call(arguments, 1)
     var listeners = getListeners.call(this, event)
     if (event) {
       for (i = 0, l = listeners.length; i < l; i += 1) {

@@ -15,7 +15,7 @@ describe('event', function () {
   describe('listeners', function () {
     var count = 0
 
-    function increment() { count += 1 }
+    function increment(num) { count += num }
 
     before(function () {
       bus = new Event
@@ -28,7 +28,7 @@ describe('event', function () {
     })
 
     it('should emit an event passing an argument', function () {
-      bus.emit('test', 'hello')
+      bus.emit('test', 1)
       expect(count).to.be.equal(1)
     })
 
@@ -40,7 +40,7 @@ describe('event', function () {
     })
 
     it('should emit the once event', function () {
-      bus.emit('once')
+      bus.emit('once', 1)
       expect(count).to.be.equal(2)
     })
 
