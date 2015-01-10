@@ -60,7 +60,7 @@ var lil = require('lil-event')
 ##### Basic emitter API
 ```js
 function connectDB() {
-  var bus = new lil.Event()
+  var bus = new lil.Event() // or Object.create(lil.Event.prototype)
   db.connect(uri)
     .on('error', function (err) {
       bus.emit('error', err)
