@@ -82,5 +82,5 @@
   }
 
   Event.VERSION = VERSION
-  exports.Event = Event
+  return exports.Event = Event
 }))
