@@ -12,12 +12,13 @@
   }
 }(this, function (exports) {
   'use strict'
+  
   var VERSION = '0.1.3'
   var slice = Array.prototype.slice
   var hasOwn = Object.prototype.hasOwnProperty
 
   function Event() {}
-
+  
   Event.prototype.constructor = Event
 
   Event.prototype.addListener = Event.prototype.on = function (event, fn, once) {
@@ -30,12 +31,13 @@
   }
 
   Event.prototype.removeListener = Event.prototype.off = function (event, fn) {
-    var index
-    var listeners = getListeners.call(this, event)
+    var index, listeners
     var listener = findListener.call(this, event, fn)
     if (listener) {
-      index = listeners.indexOf(listener)
-      if (index >= 0) listeners.splice(index, 1)
+      listeners = getListeners.call(this, event)
+      if (~listeners.indexOf(listener)) {
+        listeners.splice(index, 1)
+      }
     }
     return this
   }
@@ -46,14 +48,12 @@
   }
 
   Event.prototype.emit = Event.prototype.fire = function (event) {
-    var i, l, listener, args = slice.call(arguments, 1)
+    var listener, args = slice.call(arguments, 1)
     var listeners = getListeners.call(this, event)
-    if (event) {
-      for (i = 0, l = listeners.length; i < l; i += 1) {
-        listener = listeners[i]
-        if (listener.once) listeners.splice(i, 1)
-        listener.fn.apply(null, args)
-      }
+    for (var i = 0, l = listeners.length; event && i < l; i += 1) {
+      listener = listeners[i]
+      if (listener.once) listeners.splice(i, 1)
+      listener.fn.apply(null, args)
     }
     return this
   }
@@ -66,8 +66,8 @@
   }
 
   function findListener(event, fn) {
-    var i, l, listeners = getListeners.call(this, event)
-    for (i = 0, l = listeners.length; i < l; i += 1) {
+    var listeners = getListeners.call(this, event)
+    for (var i = 0, l = listeners.length; i < l; i += 1) {
       if (listeners[i].fn === fn) return listeners[i]
     }
   }
